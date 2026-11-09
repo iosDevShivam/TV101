@@ -1,0 +1,86 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css">
+<style>
+  .top { display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; margin-top: 30px; }
+  .mem { padding: 24px 26px; }
+  .legend { display: flex; gap: 18px; margin-top: 10px; }
+  .legend span { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--muted); }
+  .sw { width: 12px; height: 12px; border-radius: 3px; }
+  .barlabel { display: flex; justify-content: space-between; margin-top: 22px; font-size: 14px; }
+  .barlabel b { font-weight: 600; }
+  .stack { display: flex; gap: 2px; height: 34px; margin-top: 8px; }
+  .seg { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.92); }
+  .seg:first-child { border-radius: 4px 0 0 4px; } .seg:last-child { border-radius: 0 4px 4px 0; }
+  .scale { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--faint); margin-top: 8px; }
+  .delta { margin-top: 20px; display: flex; gap: 22px; align-items: baseline; }
+  .delta .big { font-size: 44px; font-weight: 600; line-height: 1; }
+  .shot { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .shot img { width: 100%; display: block; flex: 1; object-fit: cover; object-position: center bottom; min-height: 0; }
+  .shot .cap { padding: 14px 18px; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 18px; }
+  .steps .card { position: relative; padding-top: 24px; }
+  .num { position: absolute; top: -10px; left: 16px; width: 24px; height: 24px; border-radius: 50%; background: #fff; color: #0b0f17; font-weight: 700; font-size: 12px; display: grid; place-items: center; }
+  .steps h3 { font-size: 15px; margin-top: 10px; } .steps p { font-size: 12.5px; margin-top: 3px; }
+  .safe { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; margin-top: 18px; }
+  .list { display: flex; flex-wrap: nowrap; gap: 6px; margin-top: 12px; }
+  .pill { white-space: nowrap; display: flex; align-items: center; gap: 6px; font-size: 13px; padding: 6px 10px; border-radius: 999px; background: var(--surface-2); }
+  .pill svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.4; stroke-linecap: round; }
+</style></head>
+<body><div class="frame" style="height:960px">
+  <div class="eyebrow">TV101 · Clear RAM</div>
+  <h1>One press, 118 MB back</h1>
+  <div class="sub">The TV has 920 MB of memory and keeps closed apps waiting in the background. Clear RAM asks Android to stop those, so the app you open next has room.</div>
+
+  <div class="top">
+    <div class="card mem">
+      <h3>Memory on the TV, before and after one press</h3>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--used)"></i>In use</span>
+        <span><i class="sw" style="background:var(--teal)"></i>Available</span>
+        <span><i class="sw" style="background:var(--amber)"></i>Freed by Clear RAM</span>
+      </div>
+      <div class="barlabel"><b>Before</b><span class="c-teal">300 MB available</span></div>
+      <div class="stack">
+        <div class="seg" style="width:calc(620/920*100%);background:var(--used)">620 MB in use</div>
+        <div class="seg" style="width:calc(300/920*100%);background:var(--teal)">300</div>
+      </div>
+      <div class="barlabel"><b>After</b><span class="c-teal">418 MB available</span></div>
+      <div class="stack">
+        <div class="seg" style="width:calc(502/920*100%);background:var(--used)">502 MB in use</div>
+        <div class="seg" style="width:calc(300/920*100%);background:var(--teal)">300</div>
+        <div class="seg" style="width:calc(118/920*100%);background:var(--amber)">+118</div>
+      </div>
+      <div class="scale"><span>0</span><span>920 MB total</span></div>
+      <div class="delta"><div class="big c-amber">+118 MB</div><p>free for the next app · <span class="k">+39 %</span> more room</p></div>
+    </div>
+    <div class="card shot">
+      <img src="assets/clear-ram-toast.png" alt="">
+      <div class="cap"><h3>What you see on the TV</h3><p>The chip button in the action row, then a short message with what came back and what's free now. Also in the Settings button's long-press menu.</p></div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="card"><div class="num">1</div><div class="ico bg-amber c-amber"><i data-i="memory"></i></div><h3>You press Clear RAM</h3><p>On Home, or from the phone remote's quick actions</p></div>
+    <div class="card"><div class="num">2</div><div class="ico bg-blue c-blue"><i data-i="gauge"></i></div><h3>Measure</h3><p>Reads how much memory is free right now</p></div>
+    <div class="card"><div class="num">3</div><div class="ico bg-violet c-violet"><i data-i="layers"></i></div><h3>Stop background apps</h3><p>Asks Android to stop each other app's cached processes, off the main thread</p></div>
+    <div class="card"><div class="num">4</div><div class="ico bg-teal c-teal"><i data-i="check"></i></div><h3>Measure again</h3><p>After 0.8 s, shows freed and available memory</p></div>
+  </div>
+
+  <div class="safe">
+    <div class="card">
+      <h3>Never stopped</h3>
+      <div class="list">
+        <span class="pill"><svg viewBox="0 0 24 24" class="c-good"><path d="m5 12 5 5 9-10"/></svg>App on screen</span>
+        <span class="pill"><svg viewBox="0 0 24 24" class="c-good"><path d="m5 12 5 5 9-10"/></svg>Playing music</span>
+        <span class="pill"><svg viewBox="0 0 24 24" class="c-good"><path d="m5 12 5 5 9-10"/></svg>System</span>
+        <span class="pill"><svg viewBox="0 0 24 24" class="c-good"><path d="m5 12 5 5 9-10"/></svg>Launcher</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Good to know</h3>
+      <p style="margin-top:8px">An app that was stopped opens from scratch next time, a second or two slower once. Use it when the TV feels sluggish, not every hour.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Real numbers from the TV, 8 Nov 2026 · ActivityManager.killBackgroundProcesses</span><span>MainActivity.clearRam · TvControl.clearRam</span></div>
+</div>
+<script src="icons.js"></script></body></html>

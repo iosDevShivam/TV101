@@ -1,0 +1,19 @@
+# Android build output and local paths
+launcher/.gradle/
+launcher/build/
+launcher/app/build/
+launcher/local.properties
+*.apk
+
+# Never commit ADB keys or a paired phone's token
+adbkey
+adbkey.pub
+*.token
+remote-token.txt
+
+.DS_Store
+__pycache__/
+
+# Your own theme (your name, photo, TV-specific apps) and your own notes for Claude stay on your computer
+theme/my-tv/
+CLAUDE.local.md

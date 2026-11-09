@@ -1,0 +1,48 @@
+{
+  "dock_apps": [
+    "com.google.android.youtube.tv",
+    "com.netflix.ninja",
+    "in.startv.hotstar",
+    "com.amazon.amazonvideo.livingroom",
+    "com.sonyliv",
+    "com.google.android.youtube.tvmusic"
+  ],
+  "columns": 3,
+  "rows_below_dock": 0,
+  "background_color": "#000000",
+  "wallpaper": false,
+  "ambient_glow": true,
+  "icon_only_buttons": true,
+  "show_greeting": true,
+  "greeting_name": "",
+  "show_stats": false,
+  "show_network_pill": true,
+  "show_inputs_pill": true,
+  "clock_wallpaper": false,
+  "clock_wallpaper_dim": 0,
+  "wallpaper_rotation_minutes": 10,
+  "wallpaper_order": "sequential",
+  "app_glow": false,
+  "dock_row": false,
+  "dock_band": false,
+  "dock_title": false,
+  "always_show_names": false,
+  "app_library": true,
+  "library_button": true,
+  "show_library_pill": false,
+  "library_ok_opens": true,
+  "live_tv_package": "",
+  "hidden_apps": [
+    "com.android.vending",
+    "com.google.android.videos",
+    "com.google.android.backdrop"
+  ],
+  "wallpaper_dim": 0,
+  "clock_glow": true,
+  "library_excluded_apps": [
+    "com.mediatek.tv.service"
+  ],
+  "weather_city": "",
+  "calendar_ics_url": "",
+  "clear_ram_button": true
+}

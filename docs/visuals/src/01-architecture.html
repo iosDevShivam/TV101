@@ -1,0 +1,103 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css">
+<style>
+  .grid { display: grid; grid-template-columns: 230px 76px 1fr 76px 260px; margin-top: 34px; align-items: stretch; }
+  .side { display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+  .wire { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--faint); }
+  .wire svg { width: 54px; height: 20px; }
+  .wire .tag { font-size: 10.5px; padding: 3px 7px; text-align: center; line-height: 1.3; }
+  .tv { border-radius: 26px; padding: 22px; background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.14); }
+  .tv-title { display: flex; justify-content: space-between; align-items: baseline; }
+  .label { font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); font-weight: 600; margin: 18px 0 10px; }
+  .screens { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .screen { border-radius: 16px; padding: 14px; background: rgba(0,0,0,.28); border: 1px solid var(--line); }
+  .screen h3 { font-size: 15px; margin-top: 10px; }
+  .screen p { font-size: 12.5px; margin-top: 3px; }
+  .engines { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .engine { display: flex; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+  .engine .ico { width: 32px; height: 32px; border-radius: 10px; }
+  .engine .ico svg { width: 18px; height: 18px; }
+  .engine b { font-size: 13.5px; font-weight: 600; display: block; }
+  .engine span { font-size: 11.5px; color: var(--muted); }
+  .sys { display: flex; flex-direction: column; gap: 8px; }
+  .sys .item { display: flex; gap: 10px; align-items: center; padding: 9px 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+  .sys .item b { font-size: 13px; font-weight: 600; display: block; }
+  .sys .item span { font-size: 11.5px; color: var(--muted); }
+  .sys .ico { width: 30px; height: 30px; border-radius: 9px; } .sys .ico svg { width: 17px; height: 17px; }
+  .net { display: grid; grid-template-columns: 230px 76px 1fr 76px 260px; margin-top: 18px; }
+  .net-row { grid-column: 3; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; position: relative; padding-top: 30px; }
+  .up { position: absolute; top: 0; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; color: var(--faint); font-size: 12px; align-items: center; }
+  .up svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+</style></head>
+<body><div class="frame" style="width:1440px;height:880px">
+  <div class="eyebrow">TV101 · Architecture</div>
+  <h1>One app on the TV does it all</h1>
+  <div class="sub">The launcher draws Home, All apps and the screensaver, and serves the phone remote. It talks to Android for apps, music, inputs and memory, and to the internet only for weather and your calendar.</div>
+
+  <div class="grid">
+    <div class="side">
+      <div class="card">
+        <div class="row"><div class="ico bg-accent c-accent"><i data-i="phone"></i></div><h3>Your phone</h3></div>
+        <p style="margin-top:10px">A web page, no app. Remote, joystick, apps, links, typing.</p>
+      </div>
+      <div class="card">
+        <div class="row"><div class="ico bg-violet c-violet"><i data-i="remote"></i></div><h3>TV remote</h3></div>
+        <p style="margin-top:10px">Arrows, OK, Back, Home, as always.</p>
+      </div>
+    </div>
+
+    <div class="wire">
+      <svg viewBox="0 0 54 20"><path d="M2 10h46M42 4l7 6-7 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <span class="tag">HTTP :8080<br>+ token</span>
+    </div>
+
+    <div class="tv">
+      <div class="tv-title">
+        <div class="row"><div class="ico bg-teal c-teal"><i data-i="tv"></i></div><div><h3 style="font-size:19px">TV101 launcher</h3><p style="font-size:12.5px">com.gathin.tvhome · Android TV 11</p></div></div>
+        <span class="tag">~55 MB · ~0.5 % CPU</span>
+      </div>
+      <div class="label">What you see</div>
+      <div class="screens">
+        <div class="screen"><div class="ico bg-blue c-blue"><i data-i="home"></i></div><h3>Home</h3><p>Your day, 6 apps, action row, QR</p></div>
+        <div class="screen"><div class="ico bg-violet c-violet"><i data-i="grid"></i></div><h3>All apps</h3><p>A–Z tiles, glow in the app's colour</p></div>
+        <div class="screen"><div class="ico bg-amber c-amber"><i data-i="moon"></i></div><h3>Screensaver</h3><p>Clock, month, now playing</p></div>
+        <div class="screen"><div class="ico bg-accent c-accent"><i data-i="server"></i></div><h3>Remote server</h3><p>Page + API, pairing, keys</p></div>
+      </div>
+      <div class="label">Engines behind them</div>
+      <div class="engines">
+        <div class="engine"><div class="ico bg-teal c-teal"><i data-i="cloud"></i></div><div><b>LockInfo</b><span>Weather + calendar cache</span></div></div>
+        <div class="engine"><div class="ico bg-amber c-amber"><i data-i="music"></i></div><div><b>NowPlaying</b><span>Follows media sessions</span></div></div>
+        <div class="engine"><div class="ico bg-blue c-blue"><i data-i="calendar"></i></div><div><b>MonthView</b><span>Whole month, one view</span></div></div>
+        <div class="engine"><div class="ico bg-violet c-violet"><i data-i="qr"></i></div><div><b>RemoteQr</b><span>Built once per address</span></div></div>
+        <div class="engine"><div class="ico bg-good c-good"><i data-i="file"></i></div><div><b>Config</b><span>Theme, read on change</span></div></div>
+        <div class="engine"><div class="ico bg-accent c-accent"><i data-i="bolt"></i></div><div><b>TvControl + Adb</b><span>Keys, text, apps, inputs</span></div></div>
+      </div>
+    </div>
+
+    <div class="wire">
+      <svg viewBox="0 0 54 20"><path d="M2 10h46M42 4l7 6-7 6M12 4 5 10l7 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <span class="tag">Android<br>APIs</span>
+    </div>
+
+    <div class="sys">
+      <div class="label" style="margin:0 0 4px">Android TV system</div>
+      <div class="item"><div class="ico bg-blue c-blue"><i data-i="box"></i></div><div><b>PackageManager</b><span>Apps, banners, icons</span></div></div>
+      <div class="item"><div class="ico bg-amber c-amber"><i data-i="music"></i></div><div><b>Media sessions</b><span>What's playing</span></div></div>
+      <div class="item"><div class="ico bg-violet c-violet"><i data-i="layers"></i></div><div><b>Usage stats</b><span>App on screen</span></div></div>
+      <div class="item"><div class="ico bg-teal c-teal"><i data-i="link"></i></div><div><b>TV inputs</b><span>HDMI 1, HDMI 2</span></div></div>
+      <div class="item"><div class="ico bg-good c-good"><i data-i="memory"></i></div><div><b>Activity manager</b><span>Clear RAM</span></div></div>
+      <div class="item"><div class="ico bg-accent c-accent"><i data-i="key"></i></div><div><b>adbd :5555 → hid</b><span>Virtual remote for keys</span></div></div>
+    </div>
+  </div>
+
+  <div class="net">
+    <div class="net-row">
+      <div class="up"><svg viewBox="0 0 24 24"><path d="M12 20V5M6 10l6-6 6 6"/></svg>Only the weather and calendar leave the house · cached, never on every screen</div>
+      <div class="card row"><div class="ico bg-blue c-blue"><i data-i="cloud"></i></div><div><h3>Open-Meteo</h3><p>Weather · 30 min cache</p></div></div>
+      <div class="card row"><div class="ico bg-violet c-violet"><i data-i="globe"></i></div><div><h3>ipwho.is</h3><p>Location · daily</p></div></div>
+      <div class="card row"><div class="ico bg-accent c-accent"><i data-i="calendar"></i></div><div><h3>Your calendar</h3><p>iCal link · 15 min cache</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span>TV101 · Android TV 11</span><span>docs/HOW-IT-WORKS.md</span></div>
+</div>
+<script src="icons.js"></script></body></html>

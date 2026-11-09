@@ -1,0 +1,74 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css">
+<style>
+  .heroes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+  .hero { display: flex; gap: 22px; align-items: center; padding: 24px; }
+  .ring { width: 128px; height: 128px; flex: none; position: relative; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring .mid { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; }
+  .ring .mid b { font-size: 26px; font-weight: 600; display: block; line-height: 1; }
+  .ring .mid span { font-size: 11px; color: var(--faint); letter-spacing: .1em; text-transform: uppercase; }
+  .hero h3 { font-size: 18px; }
+  .hero p { font-size: 13.5px; margin-top: 6px; }
+  .cores { display: flex; gap: 8px; height: 128px; align-items: flex-end; flex: none; width: 128px; }
+  .core { flex: 1; background: var(--surface-2); border-radius: 6px; position: relative; height: 100%; overflow: hidden; }
+  .core i { position: absolute; left: 0; right: 0; bottom: 0; background: var(--teal); border-radius: 0 0 6px 6px; }
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
+  .tile { padding: 20px; }
+  .tile .num { font-size: 34px; font-weight: 600; margin-top: 14px; line-height: 1; }
+  .tile .num small { font-size: 16px; color: var(--muted); font-weight: 400; }
+  .tile h3 { font-size: 15px; margin-top: 10px; }
+  .tile p { font-size: 12.5px; margin-top: 3px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+  th { text-align: left; font-weight: 500; color: var(--faint); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 0 0 8px; }
+  td { padding: 10px 0; border-top: 1px solid var(--line); color: var(--muted); }
+  td.v { color: var(--text); font-weight: 600; }
+  .bottom { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; margin-top: 16px; }
+</style></head>
+<body><div class="frame" style="height:860px">
+  <div class="eyebrow">TV101 · TV performance</div>
+  <h1>The launcher barely touches the TV</h1>
+  <div class="sub" style="max-width:1000px">Measured on the TV itself, a 4-core CPU with 920 MB of memory. Almost all of it is left for the apps you watch.</div>
+
+  <div class="heroes">
+    <div class="card hero">
+      <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,.08)" stroke-width="12" fill="none"/><circle cx="60" cy="60" r="50" stroke="#22a7b8" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="1.9 314.2"/></svg>
+        <div class="mid"><div><b>0.6%</b><span>of CPU</span></div></div></div>
+      <div><h3>Launcher CPU</h3><p>0.0–0.6 % on Home, 0.6 % on the screensaver with a song playing.</p></div>
+    </div>
+    <div class="card hero">
+      <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,.08)" stroke-width="12" fill="none"/><circle cx="60" cy="60" r="50" stroke="#22a7b8" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="18.8 314.2"/></svg>
+        <div class="mid"><div><b>55 MB</b><span>of 920 MB</span></div></div></div>
+      <div><h3>Launcher memory</h3><p>About 6 % of the TV's memory, the same on Home and on the screensaver.</p></div>
+    </div>
+    <div class="card hero">
+      <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,.08)" stroke-width="12" fill="none"/><circle cx="60" cy="60" r="50" stroke="#22a7b8" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="31.4 314.2"/></svg>
+        <div class="mid"><div><b>~10%</b><span>busy</span></div></div></div>
+      <div><h3>Whole TV</h3><p>All four cores together about 90 % idle while Home or the screensaver is up.</p></div>
+    </div>
+  </div>
+
+  <div class="tiles">
+    <div class="card tile"><div class="ico bg-accent c-accent"><i data-i="bolt"></i></div><div class="num">15<small> ms</small></div><h3>Per key from the phone</h3><p>was 1,750 ms with input keyevent</p></div>
+    <div class="card tile"><div class="ico bg-violet c-violet"><i data-i="box"></i></div><div class="num">692<small> KB</small></div><h3>Whole launcher APK</h3><p>QR support added only 35 KB</p></div>
+    <div class="card tile"><div class="ico bg-good c-good"><i data-i="refresh"></i></div><div class="num">2<small> s</small></div><h3>Back after a forced stop</h3><p>Remote server up again, first key works</p></div>
+    <div class="card tile"><div class="ico bg-amber c-amber"><i data-i="memory"></i></div><div class="num">+118<small> MB</small></div><h3>Clear RAM, one press</h3><p>300 → 418 MB available</p></div>
+  </div>
+
+  <div class="bottom">
+    <div class="card">
+      <h3>Two situations, measured</h3>
+      <table>
+        <tr><th>Situation</th><th>Launcher CPU</th><th>Launcher memory</th></tr>
+        <tr><td>Home, nothing happening</td><td class="v">0.0–0.6 %</td><td class="v">54 MB</td></tr>
+        <tr><td>Screensaver, song playing, progress ticking</td><td class="v">0.6 %</td><td class="v">55 MB</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>How it was measured</h3>
+      <p style="margin-top:10px"><span class="k">top</span> sampled every 3 s for the launcher's process, <span class="k">dumpsys meminfo</span> for memory (PSS), whole-TV load from <span class="k">top</span>'s summary. Same day, same TV. The song came from a silent test session, removed afterwards.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Android TV 11 · 4-core · 920 MB · 8 Nov 2026</span><span>docs/TESTING.md has every scenario</span></div>
+</div>
+<script src="icons.js"></script></body></html>

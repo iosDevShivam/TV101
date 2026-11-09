@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The coloured bar beside an event's title (Home's Up next, the lock screen). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="#FFFF6B6B" />
+    <corners android:radius="2dp" />
+</shape>

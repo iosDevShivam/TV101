@@ -1,0 +1,90 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css">
+<style>
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+  .feat { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .pic { height: 150px; background: #000 center/cover no-repeat; border-bottom: 1px solid var(--line); }
+  .body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+  .body .row h3 { font-size: 17px; }
+  .body .ico { width: 34px; height: 34px; border-radius: 10px; } .body .ico svg { width: 19px; height: 19px; }
+  .what { margin-top: 10px; font-size: 13.5px; color: var(--text); line-height: 1.45; }
+  .how { margin-top: 6px; font-size: 12.5px; }
+  .set { margin-top: auto; padding-top: 12px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; background: rgba(255,255,255,.08); border: 1px solid var(--line); padding: 3px 7px; border-radius: 7px; color: #e8e8ec; }
+  .setlabel { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  .two { display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; margin-top: 16px; }
+  .glows { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 8px; padding: 14px 14px 0; }
+  .glows div { height: 128px; border-radius: 12px; background: #000 center/cover no-repeat; border: 1px solid var(--line); position: relative; }
+  .glows span { position: absolute; left: 8px; top: 8px; font-size: 11px; background: rgba(0,0,0,.6); padding: 3px 8px; border-radius: 999px; color: #eee; }
+  pre { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; line-height: 1.6; background: rgba(0,0,0,.35); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-top: 12px; color: #d8dae0; white-space: pre; }
+  .kk { color: #7fb0ff; } .sv { color: #e6a23c; } .cm { color: rgba(255,255,255,.38); }
+  .cmd { margin-top: 10px; font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #4fd0de; }
+</style></head>
+<body><div class="frame" style="height:1050px">
+  <div class="eyebrow">TV101 · Smart features</div>
+  <h1>Small touches that make the TV feel yours</h1>
+  <div class="sub" style="max-width:1000px">Each one works on its own, costs almost nothing, and is switched by one line in one settings file.</div>
+
+  <div class="three">
+    <div class="card feat">
+      <div class="pic" style="background-image:url(assets/qr-home.png);background-size:contain;background-color:#05080c"></div>
+      <div class="body">
+        <div class="row"><div class="ico bg-violet c-violet"><i data-i="qr"></i></div><h3>QR code</h3></div>
+        <div class="what">Scan it with any phone camera to open the phone remote. On Home and on the screensaver.</div>
+        <div class="how">Holds <span class="k">http://&lt;TV address&gt;:8080</span>. Built once, rebuilt only if the router gives the TV a new address.</div>
+        <div class="set"><span class="setlabel">Setting</span><code>"phone_remote": true</code></div>
+      </div>
+    </div>
+    <div class="card feat">
+      <div class="pic" style="background-image:url(assets/now-playing.png);background-size:contain;background-color:#0c0508"></div>
+      <div class="body">
+        <div class="row"><div class="ico bg-amber c-amber"><i data-i="music"></i></div><h3>Music</h3></div>
+        <div class="what">The song, artist, cover and progress appear on the screensaver while music plays, and fade 30 s after it stops.</div>
+        <div class="how">Reads the media session any music app publishes (Spotify, phone over Bluetooth). YouTube Music on TV can't: it stops when covered.</div>
+        <div class="set"><span class="setlabel">Setup</span><code>install.sh</code><span class="how" style="margin:0">grants it once</span></div>
+      </div>
+    </div>
+    <div class="card feat">
+      <div class="pic" style="background-image:url(assets/calendar.png);background-size:contain;background-color:#06100f"></div>
+      <div class="body">
+        <div class="row"><div class="ico bg-blue c-blue"><i data-i="calendar"></i></div><h3>Calendar</h3></div>
+        <div class="what">This month on the screensaver, today in coral. Your next event under "Up next" on Home.</div>
+        <div class="how">Reads Google Calendar's private iCal link every 15 min: repeats, time zones, moved and cancelled events handled.</div>
+        <div class="set"><span class="setlabel">Setting</span><code>"calendar_ics_url": "…"</code></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two">
+    <div class="card feat">
+      <div class="glows">
+        <div style="background-image:url(assets/home-glow.png)"><span>Home · YouTube</span></div>
+        <div style="background-image:url(assets/glow-magenta.png);background-position:left center"><span>All apps · JioCinema</span></div>
+        <div style="background-image:url(assets/glow-red.png)"><span>All apps · Netflix</span></div>
+      </div>
+      <div class="body">
+        <div class="row"><div class="ico bg-accent c-accent"><i data-i="sparkle"></i></div><h3>Colour that adapts to each app</h3></div>
+        <div class="what">The background glows in the colour of the app you're on: red behind YouTube and Netflix, magenta behind JioCinema, blue behind Prime Video. It slides and fades as you move.</div>
+        <div class="how">The colour is taken once from each app's own icon (its saturated pixels at 16 × 16), then reused. One soft gradient, no extra screens.</div>
+        <div class="set"><span class="setlabel">Setting</span><code>"ambient_glow": true</code><span class="how" style="margin:0">for Home · always on in All apps</span></div>
+      </div>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column">
+      <div class="row"><div class="ico bg-good c-good"><i data-i="file"></i></div><h3>Easy to configure</h3></div>
+      <div class="what" style="font-size:13.5px;margin-top:10px">Everything personal lives in one small file. Edit it, send it, done: no rebuild.</div>
+<pre><span class="cm">// theme/my-tv/config.json</span>
+{
+  <span class="kk">"greeting_name"</span>: <span class="sv">"Alex"</span>,
+  <span class="kk">"weather_city"</span>: <span class="sv">""</span>,  <span class="cm">// empty = auto</span>
+  <span class="kk">"calendar_ics_url"</span>: <span class="sv">"https://…"</span>,
+  <span class="kk">"dock_apps"</span>: [<span class="sv">"…youtube.tv"</span>, …],
+  <span class="kk">"ambient_glow"</span>: <span class="sv">true</span>,
+  <span class="kk">"clear_ram_button"</span>: <span class="sv">true</span>
+}</pre>
+      <div class="cmd">$ scripts/push-theme.sh theme/my-tv</div>
+      <div class="how" style="margin-top:6px">Or ask Claude: <span class="k">"Change the weather city to London."</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Screenshots from the TV, 8 Nov 2026</span><span>docs/FEATURES.md · docs/SETUP.md</span></div>
+</div>
+<script src="icons.js"></script></body></html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The round utility buttons under the apps: a faint disc, solid white while focused. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Focused: clear, so the white disc gliding behind the row (utilitySlider) shows through. -->
+    <item android:state_focused="true">
+        <shape android:shape="oval">
+            <solid android:color="#00FFFFFF" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#1AFFFFFF" />
+        </shape>
+    </item>
+</selector>

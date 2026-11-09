@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css">
+<style>
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+  .opt { display: flex; flex-direction: column; padding: 20px; min-height: 250px; }
+  .opt h3 { margin-top: 14px; font-size: 16.5px; }
+  .opt p { font-size: 13px; margin-top: 6px; min-height: 58px; }
+  .ba { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 6px; }
+  .ba div { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 13px; text-align: right; }
+  .ba .was { color: var(--faint); }
+  .ba .was b { color: var(--muted); font-weight: 500; text-decoration: line-through; text-decoration-color: rgba(255,107,107,.7); }
+  .ba .now b { color: #4fd0de; font-weight: 600; font-size: 15px; }
+  .ba span { color: var(--faint); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; }
+  .principle { margin-top: 22px; display: flex; gap: 14px; }
+  .principle .card { flex: 1; display: flex; gap: 12px; align-items: center; padding: 14px 18px; }
+  .principle p { font-size: 13.5px; }
+</style></head>
+<body><div class="frame" style="height:930px">
+  <div class="eyebrow">TV101 · Optimised launcher</div>
+  <h1>Fast on a 920 MB TV, by doing less</h1>
+  <div class="sub">A TV CPU is slower than a phone's. The launcher stays light by never repeating work it has already done, and by waiting to be told instead of checking.</div>
+
+  <div class="cards">
+    <div class="card opt"><div class="ico bg-blue c-blue"><i data-i="calendar"></i></div><h3>Whole month, one view</h3><p>The screensaver's calendar is drawn by one view in one pass.</p>
+      <div class="ba"><div class="was"><span>Usual</span><b>~50 text views</b></div><div class="now"><span>TV101</span><b>1 view, redraw once a day</b></div></div></div>
+    <div class="card opt"><div class="ico bg-amber c-amber"><i data-i="music"></i></div><h3>Now playing listens</h3><p>Android says when the song or play state changes; nothing checks in a loop.</p>
+      <div class="ba"><div class="was"><span>Usual</span><b>poll every second</b></div><div class="now"><span>TV101</span><b>event-driven; tick only while playing</b></div></div></div>
+    <div class="card opt"><div class="ico bg-teal c-teal"><i data-i="cloud"></i></div><h3>Network cached and shared</h3><p>Home and the screensaver read the same saved weather and calendar.</p>
+      <div class="ba"><div class="was"><span>Usual</span><b>fetch per screen</b></div><div class="now"><span>TV101</span><b>30 / 15 min · location daily</b></div></div></div>
+    <div class="card opt"><div class="ico bg-accent c-accent"><i data-i="bolt"></i></div><h3>Keys without new processes</h3><p>One virtual remote stays open; each key is a single report.</p>
+      <div class="ba"><div class="was"><span>Usual</span><b>1,750 ms per key</b></div><div class="now"><span>TV101</span><b>~15 ms per key</b></div></div></div>
+    <div class="card opt"><div class="ico bg-violet c-violet"><i data-i="qr"></i></div><h3>QR built once</h3><p>One pixel per square, scaled up sharp; shared by Home and the screensaver.</p>
+      <div class="ba"><div class="was"><span>Usual</span><b>generate per screen</b></div><div class="now"><span>TV101</span><b>once per network address</b></div></div></div>
+    <div class="card opt"><div class="ico bg-good c-good"><i data-i="file"></i></div><h3>Theme read on change</h3><p>Settings come from one small file that is cached until it changes.</p>
+      <div class="ba"><div class="was"><span>Before</span><b>re-read every minute</b></div><div class="now"><span>TV101</span><b>only when the file changes</b></div></div></div>
+    <div class="card opt"><div class="ico bg-blue c-blue"><i data-i="sparkle"></i></div><h3>App colour, worked out once</h3><p>Each app's glow colour comes from a 16 × 16 copy of its icon, off the main thread.</p>
+      <div class="ba"><div class="was"><span>Usual</span><b>analyse on every move</b></div><div class="now"><span>TV101</span><b>once per app, then cached</b></div></div></div>
+    <div class="card opt"><div class="ico bg-amber c-amber"><i data-i="layers"></i></div><h3>Nothing extra on screen</h3><p>Film grain and Home's memory meter were removed after testing.</p>
+      <div class="ba"><div class="was"><span>Before</span><b>full-screen layer + polling</b></div><div class="now"><span>TV101</span><b>none</b></div></div></div>
+  </div>
+
+  <div class="principle">
+    <div class="card"><div class="ico bg-teal c-teal"><i data-i="refresh"></i></div><p><span class="k">Compute once, reuse.</span> Bitmaps, colours, settings and network replies are kept until they actually change.</p></div>
+    <div class="card"><div class="ico bg-amber c-amber"><i data-i="clock"></i></div><p><span class="k">Wait to be told.</span> Callbacks instead of timers; the only timers run while something visibly moves.</p></div>
+    <div class="card"><div class="ico bg-violet c-violet"><i data-i="cpu"></i></div><p><span class="k">Off the main thread.</span> Icons, network, Clear RAM and adb work never block the screen.</p></div>
+  </div>
+  <div class="foot"><span>TV101 · docs/ARCHITECTURE.md has the details per file</span><span>Measured results: see Performance</span></div>
+</div>
+<script src="icons.js"></script></body></html>

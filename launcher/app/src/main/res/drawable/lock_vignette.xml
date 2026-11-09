@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The screensaver's soft vignette: clear in the middle, darkening towards the edges. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient
+        android:type="radial"
+        android:gradientRadius="75%p"
+        android:centerX="0.5"
+        android:centerY="0.5"
+        android:startColor="#00000000"
+        android:centerColor="#1A000000"
+        android:endColor="#B3000000" />
+</shape>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Screensaver (ClockDream): a thin clock with the date and weather beside the month, and along the bottom your
+     name, the song that is playing and the phone remote's QR. ClockScene fills it in and shifts it a few pixels
+     every minute so nothing burns in. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF000000">
+
+    <!-- The glow is its background; clock_wallpaper puts the picture in it, cropped like Home's. -->
+    <ImageView
+        android:id="@+id/dreamAmbient"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:importantForAccessibility="no" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/lock_vignette"
+        android:importantForAccessibility="no" />
+
+    <FrameLayout
+        android:id="@+id/dreamContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="36dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextClock
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:format12Hour="h:mm"
+                    android:format24Hour="HH:mm"
+                    android:textColor="#E6FFFFFF"
+                    android:textSize="140sp"
+                    android:fontFamily="@string/font_extralight"
+                    android:letterSpacing="-0.03"
+                    android:includeFontPadding="false" />
+
+                <TextView
+                    android:id="@+id/dreamGreeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#99FFFFFF"
+                    android:textSize="16sp"
+                    android:fontFamily="@string/font_regular" />
+
+                <LinearLayout
+                    android:id="@+id/dreamWeather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/dreamWeatherIcon"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:alpha="0.85"
+                        android:importantForAccessibility="no" />
+
+                    <TextView
+                        android:id="@+id/dreamTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="15sp"
+                        android:fontFamily="@string/font_regular" />
+
+                    <TextView
+                        android:id="@+id/dreamWeatherText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="15sp"
+                        android:fontFamily="@string/font_regular" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="230dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginEnd="40dp"
+                android:background="#1AFFFFFF" />
+
+            <com.gathin.tvhome.MonthView
+                android:id="@+id/dreamMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Along the bottom: you on the left, the song in the middle, the phone remote's QR on the right. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="52dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginBottom="40dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/dreamAvatar"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:background="@drawable/lock_avatar_ring"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/lock_avatar"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:id="@+id/dreamName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/lock_name"
+                    android:textColor="#F2FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="@string/font_medium" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dreamMusic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:alpha="0"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/dreamMusicArt"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/art_round"
+                    android:scaleType="centerCrop"
+                    android:importantForAccessibility="no" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/now_playing"
+                        android:textAllCaps="true"
+                        android:letterSpacing="0.2"
+                        android:textColor="#61FFFFFF"
+                        android:textSize="8sp"
+                        android:fontFamily="@string/font_medium" />
+
+                    <TextView
+                        android:id="@+id/dreamMusicTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="260dp"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:textColor="#EBFFFFFF"
+                        android:textSize="14sp"
+                        android:fontFamily="@string/font_medium" />
+
+                    <TextView
+                        android:id="@+id/dreamMusicArtist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="260dp"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="11sp"
+                        android:fontFamily="@string/font_regular" />
+
+                    <ProgressBar
+                        android:id="@+id/dreamMusicProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="150dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="6dp"
+                        android:max="1000"
+                        android:progressDrawable="@drawable/now_playing_bar" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/dreamQr"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end|center_vertical"
+                android:padding="5dp"
+                android:background="@drawable/qr_tile"
+                android:scaleType="fitXY"
+                android:visibility="gone"
+                android:importantForAccessibility="no" />
+        </FrameLayout>
+    </FrameLayout>
+</FrameLayout>

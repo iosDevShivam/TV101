@@ -1,0 +1,28 @@
+/* Shared look for TV101's diagrams: the launcher's own dark palette and Outfit. Rendered at 2x by render.sh. */
+@font-face { font-family: Outfit; src: url(../../../launcher/app/src/main/res/font/outfit.ttf); font-weight: 100 900; }
+:root {
+  --bg: #07080c; --surface: rgba(255,255,255,.045); --surface-2: rgba(255,255,255,.08); --line: rgba(255,255,255,.09);
+  --text: #f2f3f5; --muted: rgba(255,255,255,.62); --faint: rgba(255,255,255,.38);
+  --accent: #ff6b6b; --teal: #22a7b8; --amber: #c27a12; --used: #3a3f4c; --good: #3ddc84; --bad: #ff6b6b;
+}
+* { box-sizing: border-box; margin: 0; }
+body { background: var(--bg); color: var(--text); font-family: Outfit, sans-serif; -webkit-font-smoothing: antialiased; }
+.frame { width: 1200px; padding: 52px 60px 48px; position: relative; overflow: hidden;
+  background: radial-gradient(60% 55% at 12% 0%, rgba(120,20,40,.35), transparent 70%),
+              radial-gradient(50% 50% at 100% 100%, rgba(20,60,110,.28), transparent 70%), var(--bg); }
+.eyebrow { font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+h1 { font-size: 40px; font-weight: 600; letter-spacing: -.01em; margin-top: 10px; }
+.sub { font-size: 18px; color: var(--muted); margin-top: 8px; max-width: 860px; line-height: 1.45; }
+h3 { font-size: 17px; font-weight: 600; }
+p, li { font-size: 14.5px; color: var(--muted); line-height: 1.45; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; }
+.ico { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; flex: none; background: var(--surface-2); }
+.ico svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.row { display: flex; align-items: center; gap: 12px; }
+.tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .04em; padding: 4px 10px; border-radius: 999px; background: var(--surface-2); color: var(--muted); }
+.k { color: var(--text); font-weight: 600; }
+.foot { margin-top: 26px; font-size: 13px; color: var(--faint); display: flex; justify-content: space-between; }
+.c-accent { color: var(--accent); } .c-teal { color: #4fd0de; } .c-amber { color: #e6a23c; } .c-good { color: var(--good); }
+.bg-accent { background: rgba(255,107,107,.14); } .bg-teal { background: rgba(34,167,184,.16); } .bg-amber { background: rgba(194,122,18,.18); }
+.bg-good { background: rgba(61,220,132,.13); } .bg-violet { background: rgba(150,110,255,.16); } .bg-blue { background: rgba(70,140,255,.16); }
+.c-violet { color: #b49cff; } .c-blue { color: #7fb0ff; }
